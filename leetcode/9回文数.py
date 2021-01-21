@@ -12,5 +12,4 @@ def isPalindrome(x):
     else:
         return False
 
-
 print(isPalindrome(-123))

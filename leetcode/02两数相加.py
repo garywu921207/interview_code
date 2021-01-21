@@ -7,7 +7,7 @@
 
 '''
 class ListNode:
-    def __init__(self, val=0, next=None):
+    def __init__(self, val=None, next=None):
         self.val = val
         self.next = next
 
@@ -37,3 +37,14 @@ class Solution:
             l2 = l2.next if l2 else None  # 如果l2存在, 则向后遍历, 否则为 None
         return dummy.next  # 返回 dummy 的下一个节点, 因为 dummy 指向的是空的头结点, 下一个节点才是新建链表的后序节点
 
+class Solution2:
+    '''投机取巧法: 做一个字符串和整数的映射, 然后对每一位进行加总'''
+    def addStrings(self, num1: str, num2: str) -> str:
+        dic = {'0':0, '1':1, '2':2, '3':3, '4':4, '5': 5, '6':6, '7':7, '8':8, '9':9}
+        res = 0
+        for index, string in enumerate(num1[::-1]):
+            res += dic[string] * (10 ** index)
+
+        for index, string in enumerate(num2[::-1]):
+            res += dic[string] * (10 ** index)
+        return str(res)

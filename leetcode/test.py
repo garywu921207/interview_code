@@ -3,16 +3,17 @@ class ListNode:
         self.val = val
         self.next = next
 
-
-def addTwoNumbers(l1, l2):
+def twoMergeList(s1, s2):
+    '''
+    '''
     dummy = p = ListNode(None)
-    s = 0
-    while l1 and l2:
-        s += (l1.val if l1.val else 0) + (l2.val if l2.val else 0)
-        p.next = ListNode(s % 10)
+    while s1 or s2:
+        if s1.val < s2.val:
+            p = s1.val
+            s1 = s1.next
+        else:
+            p = s2.val
+            s2 = s2.next
         p = p.next
-        s //= 10
-        l1 = l1.next if l1 else None
-        l2 = l2.next if l2 else None
-
+    p.next = s1 or s2
     return dummy.next
